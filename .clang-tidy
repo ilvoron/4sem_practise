@@ -1,0 +1,5 @@
+Checks: >
+  -*
+
+HeaderFileExtensions: [ "", "h", "hh", "hpp", "hxx", "ipp" ]
+ImplementationFileExtensions: [ "c", "cc", "cpp", "cxx", "tpp", "txx" ]
