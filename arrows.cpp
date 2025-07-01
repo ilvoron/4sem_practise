@@ -11,11 +11,9 @@ void ClockwiseArrow::show() {
     HPEN pen    = CreatePen(PS_SOLID, 4, RGB(0, 200, 0));
     HPEN oldPen = (HPEN)SelectObject(bufferDC, pen);
 
-    // Simple horizontal arrow pointing right
+    // Горизонтальная стрелка, указывающая вправо
     MoveToEx(bufferDC, x - 15, y, NULL);
     LineTo(bufferDC, x + 15, y);
-
-    // Arrow head pointing right
     MoveToEx(bufferDC, x + 15, y, NULL);
     LineTo(bufferDC, x + 10, y - 5);
     MoveToEx(bufferDC, x + 15, y, NULL);
@@ -36,20 +34,16 @@ void ClockwiseArrow::hide() {
 
 bool ClockwiseArrow::isClockwise() { return true; }
 
-CounterClockwiseArrow::CounterClockwiseArrow(int initX, int initY) : AbstractArrow(initX, initY) {
-    updateHitbox();  // Инициализируем хитбокс после полной конструкции объекта
-}
+CounterClockwiseArrow::CounterClockwiseArrow(int initX, int initY) : AbstractArrow(initX, initY) {}
 
 void CounterClockwiseArrow::show() {
     visible     = true;
     HPEN pen    = CreatePen(PS_SOLID, 4, RGB(200, 0, 200));
     HPEN oldPen = (HPEN)SelectObject(bufferDC, pen);
 
-    // Simple horizontal arrow pointing left
+    // Горизонтальная стрелка, указывающая влево
     MoveToEx(bufferDC, x + 15, y, NULL);
     LineTo(bufferDC, x - 15, y);
-
-    // Arrow head pointing left
     MoveToEx(bufferDC, x - 15, y, NULL);
     LineTo(bufferDC, x - 10, y - 5);
     MoveToEx(bufferDC, x - 15, y, NULL);

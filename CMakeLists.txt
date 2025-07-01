@@ -3,6 +3,14 @@ project(4sem_practice)
 
 set(CMAKE_CXX_STANDARD 20)
 
-file(GLOB_RECURSE SOURCES "*.cpp")
-file(GLOB_RECURSE HEADERS "*.hpp")
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+set(SOURCE_FILES
+        abstract.cpp
+        arrows.cpp
+        base.cpp
+        bikes.cpp
+        bonuses.cpp
+        main.cpp
+        obstacles.cpp
+)
+
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})

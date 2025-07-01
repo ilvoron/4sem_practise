@@ -7,9 +7,9 @@ class ClockwiseArrow : public AbstractArrow {
    public:
     ClockwiseArrow(int initX, int initY);
 
-    virtual void show() override;
-    virtual void hide() override;
-    virtual bool isClockwise() override;
+    virtual void show() override;         // Отобразить стрелку
+    virtual void hide() override;         // Скрыть стрелку
+    virtual bool isClockwise() override;  // Проверить направление стрелки (по часовой стрелке)
 };
 
 // Стрелка против часовой стрелки
@@ -17,7 +17,7 @@ class CounterClockwiseArrow : public AbstractArrow {
    public:
     CounterClockwiseArrow(int initX, int initY);
 
-    virtual void show() override;
-    virtual void hide() override;
-    virtual bool isClockwise() override;
+    virtual void show() override;         // Отобразить стрелку
+    virtual void hide() override;         // Скрыть стрелку
+    virtual bool isClockwise() override;  // Проверить направление стрелки (против часовой стрелки)
 };

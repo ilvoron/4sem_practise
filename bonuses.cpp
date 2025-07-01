@@ -50,9 +50,7 @@ void RepairKit::applyBonus(AbstractMotorcycle* motorcycle) {
     motorcycle->repairHealth(50);
 }
 
-FuelCanister::FuelCanister(int initX, int initY) : AbstractBonus(initX, initY) {
-    updateHitbox();  // Инициализируем хитбокс после полной конструкции объекта
-}
+FuelCanister::FuelCanister(int initX, int initY) : AbstractBonus(initX, initY) {}
 
 void FuelCanister::show() {
     visible = true;

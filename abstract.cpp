@@ -2,11 +2,9 @@
 #include <windows.h>
 #include <random>
 
-extern HWND hwnd;      // Глобальный дескриптор окна
-extern HDC  bufferDC;  // Глобальный HDC для двойной буферизации
-
-static std::random_device randomDevice;               // Генератор случайных чисел
-static std::mt19937       generator(randomDevice());  // Инициализация генератора
+extern HWND         hwnd;       // Глобальный дескриптор окна
+extern HDC          bufferDC;   // Глобальный HDC для двойной буферизации
+extern std::mt19937 generator;  // Генератор случайных чисел
 
 AbstractMotorcycle::AbstractMotorcycle(int initX, int initY) : Location(initX, initY), health(100), fuel(100), visible(true) {}
 
@@ -153,9 +151,7 @@ void AbstractMotorcycle::hideStatus() {
     DeleteObject(whiteBrush);
 }
 
-AbstractObstacle::AbstractObstacle(int initX, int initY) : Location(initX, initY), visible(true) {
-    // updateHitbox() будет вызван в конструкторах конкретных классов
-}
+AbstractObstacle::AbstractObstacle(int initX, int initY) : Location(initX, initY), visible(true) {}
 
 void AbstractObstacle::respawn(int screenWidth, int screenHeight) {
     std::uniform_int_distribution<> distX(50, screenWidth - 50);
@@ -169,9 +165,7 @@ void AbstractObstacle::respawn(int screenWidth, int screenHeight) {
 
 Hitbox AbstractObstacle::getHitbox() const { return hitbox; }
 
-AbstractBonus::AbstractBonus(int initX, int initY) : Location(initX, initY), visible(true) {
-    // updateHitbox() будет вызван в конструкторах конкретных классов
-}
+AbstractBonus::AbstractBonus(int initX, int initY) : Location(initX, initY), visible(true) {}
 
 void AbstractBonus::respawn(int screenWidth, int screenHeight) {
     std::uniform_int_distribution<> distX(50, screenWidth - 50);
@@ -185,9 +179,7 @@ void AbstractBonus::respawn(int screenWidth, int screenHeight) {
 
 Hitbox AbstractBonus::getHitbox() const { return hitbox; }
 
-AbstractArrow::AbstractArrow(int initX, int initY) : Location(initX, initY), visible(true) {
-    // updateHitbox() будет вызван в конструкторах конкретных классов
-}
+AbstractArrow::AbstractArrow(int initX, int initY) : Location(initX, initY), visible(true) {}
 
 void AbstractArrow::respawn(int screenWidth, int screenHeight) {
     std::uniform_int_distribution<> distX(50, screenWidth - 50);

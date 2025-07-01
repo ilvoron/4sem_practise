@@ -2,11 +2,9 @@
 #include <windows.h>
 #include <random>
 
-extern HWND hwnd;      // Глобальный дескриптор окна
-extern HDC  bufferDC;  // Глобальный HDC для двойной буферизации
-
-static std::random_device randomDevice;               // Генератор случайных чисел
-static std::mt19937       generator(randomDevice());  // Инициализация генератора
+extern HWND         hwnd;       // Глобальный дескриптор окна
+extern HDC          bufferDC;   // Глобальный HDC для двойной буферизации
+extern std::mt19937 generator;  // Генератор случайных чисел
 
 Rock::Rock(int initX, int initY) : AbstractObstacle(initX, initY) {}
 
@@ -55,9 +53,7 @@ int Rock::getDamage() {
     return dist(generator);
 }
 
-Pothole::Pothole(int initX, int initY) : AbstractObstacle(initX, initY) {
-    updateHitbox();  // Инициализируем хитбокс после полной конструкции объекта
-}
+Pothole::Pothole(int initX, int initY) : AbstractObstacle(initX, initY) {}
 
 void Pothole::show() {
     visible         = true;

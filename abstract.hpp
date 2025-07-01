@@ -79,8 +79,8 @@ class AbstractBonus : public Location, public IDisplayable, public IRespawnable 
     virtual void applyBonus(AbstractMotorcycle* motorcycle) = 0;       // Применяет бонус к мотоциклу
 
    protected:
-    bool   visible;
-    Hitbox hitbox;
+    bool   visible;  // Флаг видимости
+    Hitbox hitbox;   // Хитбокс для коллизий
 };
 
 // Абстрактный класс для стрелок переключения
@@ -94,6 +94,6 @@ class AbstractArrow : public Location, public IDisplayable, public IRespawnable 
     virtual bool isClockwise() = 0;                                    // Направление поворота
 
    protected:
-    bool   visible;
-    Hitbox hitbox;
+    bool   visible;  // Флаг видимости
+    Hitbox hitbox;   // Хитбокс для коллизий
 };
