@@ -65,8 +65,8 @@ void SportBike::showDetails() {
     HPEN oldPen = (HPEN)SelectObject(bufferDC, pen);
 
     // Выхлопная труба
-    MoveToEx(bufferDC, x - 20, y + 8, NULL);  // Начало от корпуса
-    LineTo(bufferDC, x - 55, y + 18);         // Заканчивается позади мотоцикла
+    MoveToEx(bufferDC, x - 15, y + 5, NULL);  // Начало от задней части корпуса
+    LineTo(bufferDC, x - 50, y + 5);          // Горизонтальная труба назад
 
     SelectObject(bufferDC, oldPen);
     DeleteObject(pen);
@@ -131,12 +131,8 @@ void Cruiser::showDetails() {
     HPEN   oldPen   = (HPEN)SelectObject(bufferDC, pen);
     HBRUSH oldBrush = (HBRUSH)SelectObject(bufferDC, brush);
 
-    // Хромированные выхлопные трубы
-    Rectangle(bufferDC, x - 30, y + 12, x - 50, y + 18);  // Первая труба под корпусом
-    Rectangle(bufferDC, x - 28, y + 15, x - 48, y + 21);  // Вторая труба параллельно
-
-    Ellipse(bufferDC, x - 5, y - 20, x + 15, y - 10);     // Хромированные накладки на баке
-    Rectangle(bufferDC, x - 25, y - 25, x - 20, y - 10);  // Спинка сиденья круизера
+    Rectangle(bufferDC, x - 30, y - 6, x - 50, y - 12);  // Выхлопная труба
+    Ellipse(bufferDC, x - 5, y - 20, x + 15, y - 10);    // Накладка на бак
 
     SelectObject(bufferDC, oldPen);
     SelectObject(bufferDC, oldBrush);
@@ -186,14 +182,13 @@ void Chopper::showBody() {
 }
 
 void Chopper::showWheels() {
-    // Характерные колеса чоппера - большое переднее, маленькое заднее
     HPEN   pen      = CreatePen(PS_SOLID, 3, RGB(0, 0, 0));
     HBRUSH brush    = CreateSolidBrush(RGB(60, 60, 60));
     HPEN   oldPen   = (HPEN)SelectObject(bufferDC, pen);
     HBRUSH oldBrush = (HBRUSH)SelectObject(bufferDC, brush);
 
-    Ellipse(bufferDC, x + 35, y - 20, x + 75, y + 20);  // Большое переднее колесо (характерная черта чоппера)
-    Ellipse(bufferDC, x - 45, y - 5, x - 25, y + 15);   // Маленькое заднее колесо
+    Ellipse(bufferDC, x + 35, y - 20, x + 75, y + 20);  // Большое переднее колесо
+    Ellipse(bufferDC, x - 45, y, x - 25, y + 20);       // Маленькое заднее колесо
 
     // Спицы на большом переднем колесе
     HPEN spokePen = CreatePen(PS_SOLID, 1, RGB(150, 150, 150));
@@ -218,11 +213,10 @@ void Chopper::showWheels() {
 }
 
 void Chopper::showHandlebar() {
-    // Характерный высокий руль чоппера "обезьяньи лапы" и длинная вилка
     HPEN pen    = CreatePen(PS_SOLID, 4, RGB(100, 100, 100));
     HPEN oldPen = (HPEN)SelectObject(bufferDC, pen);
 
-    // Длинная передняя вилка - главная особенность чоппера
+    // Длинная передняя вилка
     MoveToEx(bufferDC, x + 10, y - 5, NULL);
     LineTo(bufferDC, x + 55, y - 25);  // Наклонная вилка к переднему колесу
 
@@ -247,36 +241,15 @@ void Chopper::showHandlebar() {
 }
 
 void Chopper::showDetails() {
-    // Характерные длинные выхлопные трубы чоппера
     HPEN pen    = CreatePen(PS_SOLID, 4, RGB(150, 150, 150));
     HPEN oldPen = (HPEN)SelectObject(bufferDC, pen);
 
-    // Двойные длинные выхлопные трубы
-    MoveToEx(bufferDC, x - 15, y + 3, NULL);  // Начало от двигателя
-    LineTo(bufferDC, x - 70, y + 25);         // Длинная труба вниз и назад
-
-    MoveToEx(bufferDC, x - 12, y + 6, NULL);  // Вторая труба
-    LineTo(bufferDC, x - 67, y + 28);         // Параллельно первой
-
-    // Хромированные наконечники труб
-    HBRUSH chromeBrush = CreateSolidBrush(RGB(220, 220, 220));
-    HBRUSH oldBrush    = (HBRUSH)SelectObject(bufferDC, chromeBrush);
-    Ellipse(bufferDC, x - 72, y + 23, x - 68, y + 27);
-    Ellipse(bufferDC, x - 69, y + 26, x - 65, y + 30);
-
-    // Подножки чоппера
-    HPEN footpegPen = CreatePen(PS_SOLID, 3, RGB(100, 100, 100));
-    SelectObject(bufferDC, footpegPen);
-    MoveToEx(bufferDC, x - 20, y + 8, NULL);
-    LineTo(bufferDC, x - 30, y + 12);
-    MoveToEx(bufferDC, x - 18, y + 10, NULL);
-    LineTo(bufferDC, x - 28, y + 14);
+    // Выхлопная труба
+    MoveToEx(bufferDC, x - 12, y + 6, NULL);
+    LineTo(bufferDC, x - 20, y + 10);
 
     SelectObject(bufferDC, oldPen);
-    SelectObject(bufferDC, oldBrush);
     DeleteObject(pen);
-    DeleteObject(chromeBrush);
-    DeleteObject(footpegPen);
 }
 
 void Chopper::hideBody() { hideComponent(-35, -20, 25, 15); }
@@ -309,7 +282,6 @@ void Enduro::showBody() {
 }
 
 void Enduro::showWheels() {
-    // Внедорожные колеса с упрощенным протектором
     HPEN   pen      = CreatePen(PS_SOLID, 4, RGB(0, 0, 0));
     HBRUSH brush    = CreateSolidBrush(RGB(80, 80, 80));
     HPEN   oldPen   = (HPEN)SelectObject(bufferDC, pen);
