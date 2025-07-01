@@ -4,9 +4,7 @@
 extern HWND hwnd;      // Глобальный дескриптор окна
 extern HDC  bufferDC;  // Глобальный HDC для двойной буферизации
 
-ClockwiseArrow::ClockwiseArrow(int initX, int initY) : AbstractArrow(initX, initY) {
-    updateHitbox();  // Инициализируем хитбокс после полной конструкции объекта
-}
+ClockwiseArrow::ClockwiseArrow(int initX, int initY) : AbstractArrow(initX, initY) {}
 
 void ClockwiseArrow::show() {
     visible     = true;

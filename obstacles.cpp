@@ -2,13 +2,13 @@
 #include <windows.h>
 #include <random>
 
-extern HWND         hwnd;       // Глобальный дескриптор окна
-extern HDC          bufferDC;   // Глобальный HDC для двойной буферизации
-extern std::mt19937 generator;  // Генератор случайных чисел
+extern HWND hwnd;      // Глобальный дескриптор окна
+extern HDC  bufferDC;  // Глобальный HDC для двойной буферизации
 
-Rock::Rock(int initX, int initY) : AbstractObstacle(initX, initY) {
-    updateHitbox();  // Инициализируем хитбокс после полной конструкции объекта
-}
+static std::random_device randomDevice;               // Генератор случайных чисел
+static std::mt19937       generator(randomDevice());  // Инициализация генератора
+
+Rock::Rock(int initX, int initY) : AbstractObstacle(initX, initY) {}
 
 void Rock::show() {
     visible         = true;

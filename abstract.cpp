@@ -2,13 +2,13 @@
 #include <windows.h>
 #include <random>
 
-extern HWND         hwnd;       // Глобальный дескриптор окна
-extern HDC          bufferDC;   // Глобальный HDC для двойной буферизации
-extern std::mt19937 generator;  // Генератор случайных чисел
+extern HWND hwnd;      // Глобальный дескриптор окна
+extern HDC  bufferDC;  // Глобальный HDC для двойной буферизации
 
-AbstractMotorcycle::AbstractMotorcycle(int initX, int initY) : Location(initX, initY), health(100), fuel(100), visible(true) {
-    updateHitbox();
-}
+static std::random_device randomDevice;               // Генератор случайных чисел
+static std::mt19937       generator(randomDevice());  // Инициализация генератора
+
+AbstractMotorcycle::AbstractMotorcycle(int initX, int initY) : Location(initX, initY), health(100), fuel(100), visible(true) {}
 
 int  AbstractMotorcycle::getHealth() const { return health; }
 int  AbstractMotorcycle::getFuel() const { return (int)fuel; }  // Приводим к int для отображения

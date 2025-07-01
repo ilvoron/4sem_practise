@@ -4,9 +4,7 @@
 extern HWND hwnd;      // Глобальный дескриптор окна
 extern HDC  bufferDC;  // Глобальный HDC для двойной буферизации
 
-RepairKit::RepairKit(int initX, int initY) : AbstractBonus(initX, initY) {
-    updateHitbox();  // Инициализируем хитбокс после полной конструкции объекта
-}
+RepairKit::RepairKit(int initX, int initY) : AbstractBonus(initX, initY) {}
 
 void RepairKit::show() {
     visible = true;
