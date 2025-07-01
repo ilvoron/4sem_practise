@@ -2,11 +2,9 @@
 #include <windows.h>
 #include <random>
 
-extern HWND hwnd;      // Глобальный дескриптор окна
-extern HDC  bufferDC;  // Глобальный HDC для двойной буферизации
-
-extern std::random_device randomDevice;  // Генератор случайных чисел (используется для инициализации генератора)
-extern std::mt19937       generator;     // Генератор случайных чисел
+extern HWND         hwnd;       // Глобальный дескриптор окна
+extern HDC          bufferDC;   // Глобальный HDC для двойной буферизации
+extern std::mt19937 generator;  // Генератор случайных чисел
 
 AbstractMotorcycle::AbstractMotorcycle(int initX, int initY) : Location(initX, initY), health(100), fuel(100), visible(true) {
     updateHitbox();
