@@ -80,7 +80,7 @@ void FuelCanister::show() {
     MoveToEx(bufferDC, x + 12, y + 15, NULL);  // Правый нижний угол
     LineTo(bufferDC, x, y);                    // К центру
 
-    // Ручка канистры сверху (серая)
+    // Ручка канистры сверху
     HPEN   handlePen   = CreatePen(PS_SOLID, 3, RGB(100, 100, 100));
     HBRUSH handleBrush = CreateSolidBrush(RGB(150, 150, 150));
     SelectObject(bufferDC, handlePen);
@@ -99,7 +99,7 @@ void FuelCanister::show() {
     SelectObject(bufferDC, (HBRUSH)GetStockObject(NULL_BRUSH));
     Rectangle(bufferDC, x - 5, y - 23, x + 5, y - 20);
 
-    // Горловина канистры (желтая) - характерная деталь топливных канистр
+    // Горловина канистры
     HPEN   spoutPen   = CreatePen(PS_SOLID, 2, RGB(200, 150, 0));
     HBRUSH spoutBrush = CreateSolidBrush(RGB(255, 200, 50));
     SelectObject(bufferDC, spoutPen);
@@ -108,7 +108,7 @@ void FuelCanister::show() {
     // Цилиндрическая горловина сверху канистры
     Ellipse(bufferDC, x + 8, y - 30, x + 18, y - 15);
 
-    // Крышка горловины (более темная желтая)
+    // Крышка горловины
     HBRUSH capBrush = CreateSolidBrush(RGB(220, 170, 30));
     SelectObject(bufferDC, capBrush);
     Ellipse(bufferDC, x + 9, y - 28, x + 17, y - 20);
@@ -132,13 +132,12 @@ void FuelCanister::hide() {
     // Очищаем всю область канистры, включая ручку и горловину
     HBRUSH brush    = CreateSolidBrush(RGB(255, 255, 255));
     HBRUSH oldBrush = (HBRUSH)SelectObject(bufferDC, brush);
-    Rectangle(bufferDC, x - 20, y - 35, x + 25, y + 25);  // Расширенная область для новых элементов
+    Rectangle(bufferDC, x - 20, y - 35, x + 25, y + 25);
     SelectObject(bufferDC, oldBrush);
     DeleteObject(brush);
 }
 
 void FuelCanister::updateHitbox() {
-    // Хитбокс учитывает новую форму с ручкой сверху и горловиной
     hitbox.left   = x - 17;  // Левая граница основного тела
     hitbox.right  = x + 20;  // Правая граница (включая горловину)
     hitbox.top    = y - 32;  // Верхняя граница (включая ручку)

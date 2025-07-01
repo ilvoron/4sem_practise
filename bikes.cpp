@@ -31,16 +31,14 @@ void SportBike::showBody() {
 }
 
 void SportBike::showWheels() {
-    // Тонкие спортивные колеса (черные) - расположены под корпусом
+    // Тонкие спортивные колеса (черные)
     HPEN   pen      = CreatePen(PS_SOLID, 3, RGB(0, 0, 0));
     HBRUSH brush    = CreateSolidBrush(RGB(50, 50, 50));
     HPEN   oldPen   = (HPEN)SelectObject(bufferDC, pen);
     HBRUSH oldBrush = (HBRUSH)SelectObject(bufferDC, brush);
 
-    // Переднее колесо - теперь ниже корпуса
-    Ellipse(bufferDC, x + 25, y + 5, x + 45, y + 25);
-    // Заднее колесо - также ниже корпуса
-    Ellipse(bufferDC, x - 45, y + 5, x - 25, y + 25);
+    Ellipse(bufferDC, x + 25, y + 5, x + 45, y + 25);  // Переднее колесо
+    Ellipse(bufferDC, x - 45, y + 5, x - 25, y + 25);  // Заднее колесо
 
     SelectObject(bufferDC, oldPen);
     SelectObject(bufferDC, oldBrush);
@@ -63,11 +61,10 @@ void SportBike::showHandlebar() {
 }
 
 void SportBike::showDetails() {
-    // Спортивные детали - выхлопная труба правильно расположена под корпусом
     HPEN pen    = CreatePen(PS_SOLID, 4, RGB(200, 200, 200));
     HPEN oldPen = (HPEN)SelectObject(bufferDC, pen);
 
-    // Выхлопная труба - теперь выходит из корпуса, а не из колеса
+    // Выхлопная труба
     MoveToEx(bufferDC, x - 20, y + 8, NULL);  // Начало от корпуса
     LineTo(bufferDC, x - 55, y + 18);         // Заканчивается позади мотоцикла
 
@@ -89,11 +86,8 @@ void Cruiser::showBody() {
     HPEN   oldPen   = (HPEN)SelectObject(bufferDC, pen);
     HBRUSH oldBrush = (HBRUSH)SelectObject(bufferDC, brush);
 
-    // Прямоугольный корпус
-    Rectangle(bufferDC, x - 35, y - 15, x + 35, y + 15);
-
-    // Топливный бак
-    Ellipse(bufferDC, x - 10, y - 25, x + 25, y - 5);
+    Rectangle(bufferDC, x - 35, y - 15, x + 35, y + 15);  // Прямоугольный корпус
+    Ellipse(bufferDC, x - 10, y - 25, x + 25, y - 5);     // Топливный бак
 
     SelectObject(bufferDC, oldPen);
     SelectObject(bufferDC, oldBrush);
@@ -108,10 +102,8 @@ void Cruiser::showWheels() {
     HPEN   oldPen   = (HPEN)SelectObject(bufferDC, pen);
     HBRUSH oldBrush = (HBRUSH)SelectObject(bufferDC, brush);
 
-    // Переднее колесо
-    Ellipse(bufferDC, x + 20, y - 10, x + 50, y + 20);
-    // Заднее колесо
-    Ellipse(bufferDC, x - 50, y - 10, x - 20, y + 20);
+    Ellipse(bufferDC, x + 20, y - 10, x + 50, y + 20);  // Переднее колесо
+    Ellipse(bufferDC, x - 50, y - 10, x - 20, y + 20);  // Заднее колесо
 
     SelectObject(bufferDC, oldPen);
     SelectObject(bufferDC, oldBrush);
@@ -134,21 +126,17 @@ void Cruiser::showHandlebar() {
 }
 
 void Cruiser::showDetails() {
-    // Детали круизера - хромированные элементы правильно расположенные
     HPEN   pen      = CreatePen(PS_SOLID, 2, RGB(200, 200, 200));
     HBRUSH brush    = CreateSolidBrush(RGB(220, 220, 220));
     HPEN   oldPen   = (HPEN)SelectObject(bufferDC, pen);
     HBRUSH oldBrush = (HBRUSH)SelectObject(bufferDC, brush);
 
-    // Хромированные выхлопные трубы - выходят из корпуса, а не из колеса
+    // Хромированные выхлопные трубы
     Rectangle(bufferDC, x - 30, y + 12, x - 50, y + 18);  // Первая труба под корпусом
     Rectangle(bufferDC, x - 28, y + 15, x - 48, y + 21);  // Вторая труба параллельно
 
-    // Хромированные накладки на баке
-    Ellipse(bufferDC, x - 5, y - 20, x + 15, y - 10);
-
-    // Спинка сиденья круизера
-    Rectangle(bufferDC, x - 25, y - 25, x - 20, y - 10);
+    Ellipse(bufferDC, x - 5, y - 20, x + 15, y - 10);     // Хромированные накладки на баке
+    Rectangle(bufferDC, x - 25, y - 25, x - 20, y - 10);  // Спинка сиденья круизера
 
     SelectObject(bufferDC, oldPen);
     SelectObject(bufferDC, oldBrush);
@@ -204,11 +192,8 @@ void Chopper::showWheels() {
     HPEN   oldPen   = (HPEN)SelectObject(bufferDC, pen);
     HBRUSH oldBrush = (HBRUSH)SelectObject(bufferDC, brush);
 
-    // Большое переднее колесо (характерная черта чоппера)
-    Ellipse(bufferDC, x + 35, y - 20, x + 75, y + 20);
-
-    // Маленькое заднее колесо
-    Ellipse(bufferDC, x - 45, y - 5, x - 25, y + 15);
+    Ellipse(bufferDC, x + 35, y - 20, x + 75, y + 20);  // Большое переднее колесо (характерная черта чоппера)
+    Ellipse(bufferDC, x - 45, y - 5, x - 25, y + 15);   // Маленькое заднее колесо
 
     // Спицы на большом переднем колесе
     HPEN spokePen = CreatePen(PS_SOLID, 1, RGB(150, 150, 150));
@@ -266,7 +251,7 @@ void Chopper::showDetails() {
     HPEN pen    = CreatePen(PS_SOLID, 4, RGB(150, 150, 150));
     HPEN oldPen = (HPEN)SelectObject(bufferDC, pen);
 
-    // Двойные длинные выхлопные трубы - визитная карточка чоппера
+    // Двойные длинные выхлопные трубы
     MoveToEx(bufferDC, x - 15, y + 3, NULL);  // Начало от двигателя
     LineTo(bufferDC, x - 70, y + 25);         // Длинная труба вниз и назад
 
@@ -330,12 +315,10 @@ void Enduro::showWheels() {
     HPEN   oldPen   = (HPEN)SelectObject(bufferDC, pen);
     HBRUSH oldBrush = (HBRUSH)SelectObject(bufferDC, brush);
 
-    // Переднее колесо
-    Ellipse(bufferDC, x + 15, y - 5, x + 45, y + 25);
-    // Заднее колесо
-    Ellipse(bufferDC, x - 45, y - 5, x - 15, y + 25);
+    Ellipse(bufferDC, x + 15, y - 5, x + 45, y + 25);  // Переднее колесо
+    Ellipse(bufferDC, x - 45, y - 5, x - 15, y + 25);  // Заднее колесо
 
-    // Упрощенный протектор - только основные линии без мелких деталей
+    // Протектор
     HPEN treadPen = CreatePen(PS_SOLID, 2, RGB(120, 120, 120));
     SelectObject(bufferDC, treadPen);
 
@@ -373,17 +356,13 @@ void Enduro::showHandlebar() {
 }
 
 void Enduro::showDetails() {
-    // Защита и багажник правильно привязанные к корпусу
     HPEN   pen      = CreatePen(PS_SOLID, 2, RGB(100, 100, 100));
     HBRUSH brush    = CreateSolidBrush(RGB(150, 150, 150));
     HPEN   oldPen   = (HPEN)SelectObject(bufferDC, pen);
     HBRUSH oldBrush = (HBRUSH)SelectObject(bufferDC, brush);
 
-    // Защита двигателя - привязана к нижней части корпуса
-    Rectangle(bufferDC, x - 15, y + 5, x + 15, y + 12);
-
-    // Багажник сзади - привязан к задней части корпуса
-    Rectangle(bufferDC, x - 30, y - 18, x - 20, y - 8);
+    Rectangle(bufferDC, x - 15, y + 5, x + 15, y + 12);  // Защита двигателя
+    Rectangle(bufferDC, x - 30, y - 18, x - 20, y - 8);  // Багажник сзади
 
     SelectObject(bufferDC, oldPen);
     SelectObject(bufferDC, oldBrush);

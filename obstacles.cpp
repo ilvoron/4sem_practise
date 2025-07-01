@@ -48,7 +48,7 @@ void Rock::updateHitbox() {
 }
 
 int Rock::getDamage() {
-    // Камни наносят умеренный урон (мелкие повреждения)
+    // Камни наносят умеренный урон
     std::uniform_int_distribution<> dist(8, 20);
     return dist(generator);
 }
@@ -88,7 +88,7 @@ void Pothole::updateHitbox() {
 }
 
 int Pothole::getDamage() {
-    // Ямы наносят серьезный урон (повреждения подвески и колес)
+    // Ямы наносят серьезный урон
     std::uniform_int_distribution<> dist(25, 45);
     return dist(generator);
 }
